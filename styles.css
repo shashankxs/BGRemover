@@ -1,0 +1,216 @@
+* {
+    box-sizing: border-box; /* Ensure padding and borders are included in element width and height */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9ecef;
+    color: #333;
+    line-height: 1.6; /* Improve text readability */
+}
+
+header {
+    background: linear-gradient(135deg, #007BFF, #0056b3); /* Gradient background */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    position: relative; /* To position the pseudo-element */
+}
+
+header .logo {
+    font-size: 2.5rem; /* Large logo font size */
+    margin-bottom: 10px; /* Space below the logo */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    position: relative; /* To position the text shadow */
+    display: inline-block; /* Allow margin adjustments */
+}
+
+header .logo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 5px; /* Height of the underline */
+    background: #fff; /* Color of the underline */
+    transform: scaleX(0); /* Start with no underline */
+    transition: transform 0.3s ease; /* Animation for the underline */
+}
+
+header .logo:hover::after {
+    transform: scaleX(1); /* Expand underline on hover */
+}
+
+nav ul {
+    list-style-type: none; /* Remove bullets from list */
+    display: flex;
+    justify-content: center; /* Center nav items */
+    margin: 10px 0 0; /* Adjust margin */
+}
+
+nav ul li {
+    margin: 0 20px; /* Spacing between nav items */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem; /* Slightly larger text for nav items */
+    position: relative; /* For hover effect */
+    padding: 5px; /* Add padding for clickable area */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+nav a:hover {
+    color: #d4d4d4; /* Change color on hover */
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px; /* Position below text */
+    width: 0%;
+    height: 2px; /* Underline thickness */
+    background: #fff; /* Underline color */
+    transition: width 0.3s ease, left 0.3s ease; /* Animate the underline */
+}
+
+nav a:hover::before {
+    width: 100%; /* Expand underline on hover */
+    left: 0; /* Align underline with left edge */
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px; /* Padding for the main section */
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    max-width: 10000px; /* Increased max-width for a wider container */
+    width: 90%; /* Set width to 90% of the viewport */
+    overflow-y: auto;
+    max-height: 80vh;
+    animation: zoomIn 0.5s ease; /* Zoom in effect */
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #007BFF; /* Title color */
+}
+
+input[type="file"] {
+    margin-bottom: 20px;
+    border: 2px dashed #007BFF; /* Dashed border for file input */
+    border-radius: 10px;
+    padding: 10px;
+    transition: border-color 0.3s; /* Smooth border color transition */
+    width: 100%; /* Make the file input full width */
+}
+
+input[type="file"]:hover {
+    border-color: #0056b3; /* Change border color on hover */
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Transition for button */
+    margin-top: 10px; /* Margin for spacing */
+    font-size: 1.1rem; /* Slightly increase font size */
+    position: relative; /* Set position for the shadow effect */
+    overflow: hidden; /* Hide overflow for the ripple effect */
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.btn:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+/* Ripple effect */
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.4); /* Light ripple color */
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease-out; /* Transition for ripple */
+    z-index: 0; /* Place ripple behind button text */
+}
+
+.btn:hover::before {
+    transform: translate(-50%, -50%) scale(1); /* Scale ripple on hover */
+}
+
+/* Adjusting the text to appear above the ripple */
+.btn span {
+    position: relative;
+    z-index: 1; /* Place text above the ripple */
+}
+
+.loading {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #007BFF; /* Loading text color */
+    animation: pulse 1.5s infinite; /* Pulse animation for loading */
+}
+
+#output {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Increased gap for better spacing */
+    margin-top: 20px;
+}
+
+#output img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s; /* Transition for images */
+}
+
+#output img:hover {
+    transform: scale(1.1); /* Scale effect on image hover */
+}
+
+footer {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0; /* Stick footer to bottom */
+    width: 100%; /* Full width */
+}
+
+footer p {
+    margin: 0;
+}
